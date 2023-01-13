@@ -1,5 +1,7 @@
 // Nos bibliothèques
 #include "Point2D.h"
+#include "Polygone.h"
+         "
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -9,7 +11,7 @@ using namespace std;
 
 // Jeux d'essais pour présenter nos résultats
 
-//Surcharge de l'opérateur et construction Point2D
+// Surcharge de l'opérateur et construction Point2D
 void test_point() {
   cout << "----------------------"
        << "Test SURCHARGE POINT"
@@ -20,13 +22,26 @@ void test_point() {
 }
 
 void test_polygone() {
-  cout << "----------------------"
-       << "Test Function 2"
+  cout << "-----------------------"
+       << "Test SURCHARGE POLYGONE"
        << "--------- -------------" << endl;
-  Point2D<double> point1(2.0, 3.0);
-  cout << "Point Avant Translation :" << point1 << endl;
-  point1.translate(5, 5);
-  cout << "Point Après translation de x :(5) et y :(5) " << point1 << endl;
+  vector<Point2D<int>> points;
+  points.push_back(Point2D<int>(2, 3));
+  points.push_back(Point2D<int>(1, 5));
+  points.push_back(Point2D<int>(3, 4));
+
+  Polygone poly(points);
+
+  Point2D<int> point4(4, 4);
+
+  cout << "Polygone Avant ajout d'un point :" << poly << endl;
+  poly.addPoint(point4);
+
+  cout << "Polygone Avant Translation :" << poly << endl;
+
+  poly.translate(12, 12);
+
+  cout << "Polygone après Translation de x :(12) et y :(12) :" << poly << endl;
   cout << "--------------------------------------------" << endl << endl;
 }
 /*
@@ -70,6 +85,7 @@ void test_carre() {
 
 int main() {
   std::cout << "Hello, World!\n";
-  //test_point();
+  // test_point();
+  test_polygone();
   return 0;
 }

@@ -5,8 +5,8 @@ using namespace std;
 
 Polygone::Polygone(void){}
 
-Polygone::Polygone(int listeSommets){
-	this->sommets. = listeSommets;
+Polygone::Polygone(vector<Point2D<int>> listeSommets){
+	this->sommets = listeSommets;
 }
 
 Polygone::Polygone(const Polygone &poly){
