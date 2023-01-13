@@ -1,11 +1,12 @@
+#ifndef POLYGONE_H
+#define POLYGONE_H
+
 #include <vector>
 #include "Point2D.h"
 
 using namespace std;
 
-class Polygone;
-
-std::ostream &operator<<(std::ostream &, Polygone const &);
+//std::ostream &operator<<(std::ostream &, Polygone const &);
 
 class Polygone {
   private:
@@ -26,14 +27,7 @@ class Polygone {
     void addPoint(Point2D<int> sommet);
 	  void translate(int dx, int dy);
 
-    friend std::ostream &operator<<(std::ostream &, Polygone const &);
+    friend std::ostream &operator<<(std::ostream &o, Polygone const &P);
 };
 
-std::ostream &operator<<(std::ostream &o, Polygone const &P) { 
-  o << "(" << P.sommets[0];
-  for(unsigned i=1; i<(P.sommets.size()); i++){
-    o << "," << P.sommets[i];
-  }
-  o << ")" << endl;
-  return o;
-}
+#endif

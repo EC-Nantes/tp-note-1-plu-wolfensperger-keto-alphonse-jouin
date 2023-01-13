@@ -22,3 +22,12 @@ void Polygone::translate(int dx, int dy) {
     this->sommets[i].translate(dx, dy);
   }
 }
+
+std::ostream &operator<<(std::ostream &o, Polygone const &P) { 
+  o << "(" << P.sommets[0];
+  for(unsigned i=1; i<(P.sommets.size()); i++){
+    o << "," << P.sommets[i];
+  }
+  o << ")" << endl;
+  return o;
+}

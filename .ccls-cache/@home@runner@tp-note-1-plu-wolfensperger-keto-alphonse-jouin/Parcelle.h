@@ -10,17 +10,17 @@
 
 #include "Polygone.h"
 #include <iostream>
-#include <stdexcept>
 #include <map>
+#include <stdexcept>
 
 using namespace std;
 
 enum parcelleTypes { ZU, ZAU, ZA, ZN };
-map<parcelleTypes, string> getTypeString (
-{parcelleTypes::ZU, "Zone urbaine"},
-{parcelleTypes::ZAU, "Zone à urbaniser"},
-{parcelleTypes::ZA, "Zone agricole"},
-{parcelleTypes::ZN, "Zone naturelle et forestière"});
+std::map<parcelleTypes, std::string> getTypeString{
+    {std::make_pair(parcelleTypes::ZU, "Zone urbaine")},
+    {std::make_pair(parcelleTypes::ZAU, "Zone à urbaniser")},
+    {std::make_pair(parcelleTypes::ZA, "Zone agricole")},
+    {std::make_pair(parcelleTypes::ZN, "Zone naturelle et forestière")}};
 
 class Parcelle {
 
@@ -30,12 +30,12 @@ private:
   int numero;
   string proprietaire;
   float surface;
-  Polygone<int> forme;
+  Polygone forme;
   int pConstructible;
 
   // Constructeur
 public:
-  Parcelle(int pNumero, string pProprietaire, Polygone<int> pForme);
+  Parcelle(int pNumero, string pProprietaire, Polygone pForme);
 
 public:
   Parcelle(Parcelle *pParcelle);
@@ -51,7 +51,7 @@ public:
   float getSurface() const;
 
 public:
-  Polygone<int> getForme() const;
+  Polygone getForme() const;
 
 public:
   string getType() const;
@@ -64,10 +64,10 @@ public:
   void setProprietaire(string pProprietaire);
 
 public:
-  void setForme(Polygone<int> pForme);
+  void setForme(Polygone pForme);
 
 public:
-  void setType(string pType);
+  virtual void setType(string pType) const = 0;
 
 public:
   float calculSurface(void);

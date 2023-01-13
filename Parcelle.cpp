@@ -1,6 +1,6 @@
 #include "Parcelle.h"
 
-Parcelle::Parcelle(int pNumero, string pProprietaire, Polygone<int> pForme) {
+Parcelle::Parcelle(int pNumero, string pProprietaire, Polygone pForme) {
   setNumero(pNumero);
   setProprietaire(pProprietaire);
   setForme(pForme);
@@ -16,7 +16,7 @@ Parcelle::Parcelle(Parcelle *pParcelle) {
 int Parcelle::getNumero() const { return numero; }
 string Parcelle::getProprietaire() const { return proprietaire; }
 float Parcelle::getSurface() const { return surface; }
-Polygone<int> Parcelle::getForme() const { return forme; }
+Polygone Parcelle::getForme() const { return forme; }
 string Parcelle::getType() const { return type; }
 
 // Setter
@@ -24,11 +24,10 @@ void Parcelle::setNumero(int pNumero) { numero = pNumero; }
 void Parcelle::setProprietaire(string pProprietaire) {
   proprietaire = pProprietaire;
 }
-void Parcelle::setForme(Polygone<int> pForme) {
+void Parcelle::setForme(Polygone pForme) {
   forme = pForme;
   surface = calculSurface();
 }
-void Parcelle::setType(string pType) { type = pType; }
 
 // Fonction
 float Parcelle::calculSurface(void) {
@@ -41,5 +40,5 @@ float Parcelle::calculSurface(void) {
     sum -= points[i + 1].getX() * points[i].getY();
   }
 
-  surface = sum / 2;
+  return sum / 2;
 }

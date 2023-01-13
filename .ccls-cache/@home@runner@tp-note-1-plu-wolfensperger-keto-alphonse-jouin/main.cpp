@@ -1,9 +1,10 @@
 // Nos bibliothèques
-#include "Point2D.h"
-#include "Polygone.h"
-         "
+
 #include <iostream>
 #include <stdio.h>
+
+#include "Point2D.h"
+#include "Polygone.h"
 using namespace std;
 
 // Auteurs : F.ALPHONSE & C.JOUIN & Y.KETO & R.WOLFENSPERGER
@@ -34,14 +35,14 @@ void test_polygone() {
 
   Point2D<int> point4(4, 4);
 
-  cout << "Polygone Avant ajout d'un point :" << poly << endl;
+  cout << "Polygone Avant ajout d'un point :" << endl << poly << endl;
   poly.addPoint(point4);
 
-  cout << "Polygone Avant Translation :" << poly << endl;
+  cout << "Polygone Avant Translation :" << endl << poly << endl;
 
   poly.translate(12, 12);
 
-  cout << "Polygone après Translation de x :(12) et y :(12) :" << poly << endl;
+  cout << "Polygone après Translation de x :(12) et y :(12) :" << endl << poly << endl;
   cout << "--------------------------------------------" << endl << endl;
 }
 /*
