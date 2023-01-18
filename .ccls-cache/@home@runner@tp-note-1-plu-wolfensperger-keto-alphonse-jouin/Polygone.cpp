@@ -23,6 +23,18 @@ void Polygone::translate(int dx, int dy) {
   }
 }
 
+string Polygone::getStringPolygon() const {
+  string output;
+  for(int i = 0; i < sommets.size(); i++){
+    output += "[";
+    output += to_string(sommets[i].getX());
+    output += ";";
+    output += to_string(sommets[i].getY());
+    output += "] ";
+  }
+  return output;
+}
+
 std::ostream &operator<<(std::ostream &o, Polygone const &P) { 
   o << "(" << P.sommets[0];
   for(unsigned i=1; i<(P.sommets.size()); i++){

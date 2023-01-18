@@ -17,21 +17,21 @@ int Parcelle::getNumero() const { return numero; }
 string Parcelle::getProprietaire() const { return proprietaire; }
 float Parcelle::getSurface() const { return surface; }
 Polygone Parcelle::getForme() const { return forme; }
-string Parcelle::getType() const {
+string Parcelle::getStringType() const {
   string output;
-  
-  switch(type){
-    case ZU:
-      output = "Zone urbaine";
+
+  switch (type) {
+  case ZU:
+    output = "Zone urbaine";
     break;
-    case ZAU:
-      output = "Zone à urbaniser";
+  case ZAU:
+    output = "Zone à urbaniser";
     break;
-    case ZA:
-      output = "Zone agricole";
+  case ZA:
+    output = "Zone agricole";
     break;
-    case ZN:
-      output = "Zone naturelle et forestière";
+  case ZN:
+    output = "Zone naturelle et forestière";
     break;
   }
 
@@ -51,6 +51,7 @@ void Parcelle::setForme(Polygone pForme) {
 // Fonction
 float Parcelle::calculSurface(void) {
   vector<Point2D<int>> points = forme.getSommets();
+  float surface_v = 0;
 
   float sum = 0;
 
@@ -58,6 +59,18 @@ float Parcelle::calculSurface(void) {
     sum += points[i].getX() * points[i + 1].getY();
     sum -= points[i + 1].getX() * points[i].getY();
   }
-
-  return sum / 2;
+  surface_v = sum / 2;
+  try {
+    if (sum > 0) {
+      surface_v = sum;
+    } else {
+      throw string("Surface incorrecte");
+      surface_v = 0;
+    }
+  } catch (string const &err_msg) {
+    cerr << "Exception : " << err_msg << endl;
+  }
+  return surface_v;
 }
+
+parcelleTypes Parcelle::getType() { return type; }

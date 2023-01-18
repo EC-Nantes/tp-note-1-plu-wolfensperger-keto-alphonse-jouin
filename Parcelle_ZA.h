@@ -23,6 +23,7 @@ class Parcelle_ZA : public Parcelle, public Constructible {
 
   //Accesseurs
   public : void printInfo() const override;
+  public : string getInfo() const override;
 
   //Fonctions vituelles
   private : void setType() override;

@@ -21,10 +21,12 @@ class Parcelle_ZU : public Parcelle, public Constructible {
 
   //Accesseurs
   public : void printInfo() const override;
+  public : string getInfo() const override;
 
   //Fonctions vituelles
   private : void setType() override;
-  private : float surfaceConstructible(void) const override;
+  private : float surfaceConstructible(void)
+const override;
 
 };
 

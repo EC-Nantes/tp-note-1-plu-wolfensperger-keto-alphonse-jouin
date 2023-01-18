@@ -60,7 +60,10 @@ public:
   Polygone getForme() const;
 
 public:
-  string getType() const;
+  string getStringType() const;
+
+public:
+  parcelleTypes getType();
 
   // Setter
 public:
@@ -80,6 +83,9 @@ public:
 
 public:
   virtual void printInfo() const = 0;
+
+public:
+  virtual string getInfo() const = 0;
 };
 
 #endif

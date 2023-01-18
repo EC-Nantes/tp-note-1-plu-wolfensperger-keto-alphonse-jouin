@@ -11,10 +11,10 @@ Carte::Carte(const string &nomFichier) {
 
   string ligne;
   vector<Point2D<int>> points;
-  
+
   ifstream fichier(nomFichier);
   // On vérifie si le fichier est ouvert
-  if (fichier.is_open()){
+  if (fichier.is_open()) {
     // On lit les mots dans le fichier un par un
 
     while (getline(fichier, ligne)) {
@@ -29,61 +29,76 @@ Carte::Carte(const string &nomFichier) {
       string nomProprietaire;
       sligne >> nomProprietaire;
 
-      getline(fichier, ligne); // se rend à la ligne suivant
-      stringstream sligne_coord(ligne); //decompose la ligne
+      getline(fichier, ligne);          // se rend à la ligne suivant
+      stringstream sligne_coord(ligne); // decompose la ligne
       string point;
       Polygone poly;
-      while(sligne_coord >> point){ // tant qu'il rest des coordonnees
-        size_t index = point.find(";",1); // localiser le ";"
-        size_t index2 = point.size()-index-2;
+      while (sligne_coord >> point) {      // tant qu'il rest des coordonnees
+        size_t index = point.find(";", 1); // localiser le ";"
+        size_t index2 = point.size() - index - 2;
         // en déduire et convertir en int x et y :
-        int x = stoi(point.substr(1,index-1));
-        int y = stoi(point.substr(index+1,index2));
+        int x = stoi(point.substr(1, index - 1));
+        int y = stoi(point.substr(index + 1, index2));
         Point2D<int> p(x, y); // creer un Point2D à partir des coordonnées
-        poly.addPoint(p); // ajouter le point au polygone
+        poly.addPoint(p);     // ajouter le point au polygone
       }
-      
-      if(typeParcelle=="ZU"){
+
+      if (typeParcelle == "ZU") {
         string pConstructible;
         sligne >> pConstructible;
         string surfaceConstruite;
         sligne >> surfaceConstruite;
-        
-        //constructeur
-        this->parcelles.push_back(new Parcelle_ZU(stoi(numProprietaire), nomProprietaire, poly, stof(pConstructible)/100, stof(surfaceConstruite)));
-      }
-      else if (typeParcelle=="ZAU") {
+
+        // constructeur
+        this->parcelles.push_back(new Parcelle_ZU(
+            stoi(numProprietaire), nomProprietaire, poly,
+            stof(pConstructible) / 100, stof(surfaceConstruite)));
+      } else if (typeParcelle == "ZAU") {
         string pConstructible;
         sligne >> pConstructible;
-        
-        //constructeur
-        this->parcelles.push_back(new Parcelle_ZAU(stoi(numProprietaire), nomProprietaire, poly, stof(pConstructible)/100));
-      }
-      else if (typeParcelle=="ZA"){
+
+        // constructeur
+        this->parcelles.push_back(new Parcelle_ZAU(stoi(numProprietaire),
+                                                   nomProprietaire, poly,
+                                                   stof(pConstructible) / 100));
+      } else if (typeParcelle == "ZA") {
         string typeCulture;
         sligne >> typeCulture;
-        
-        //constructeur
-        this->parcelles.push_back(new Parcelle_ZA(stoi(numProprietaire), nomProprietaire, poly, typeCulture));
-      }
-      else if (typeParcelle=="ZN") {
-        //constructeur
-        this->parcelles.push_back(new Parcelle_ZN(stoi(numProprietaire), nomProprietaire, poly));
+
+        // constructeur
+        this->parcelles.push_back(new Parcelle_ZA(
+            stoi(numProprietaire), nomProprietaire, poly, typeCulture));
+      } else if (typeParcelle == "ZN") {
+        // constructeur
+        this->parcelles.push_back(
+            new Parcelle_ZN(stoi(numProprietaire), nomProprietaire, poly));
       }
     }
     // On ferme le fichier
     fichier.close();
-  }
-  else {
+  } else {
     cout << "Impossible d'ouvrir le fichier " << nomFichier << endl;
   }
-
-  
 }
 
-std::ostream &operator<<(std::ostream &o, Carte const &C) { 
-  //o << "(" << P.sommets[0]
-  for (int i=0; i<C.parcelles.size(); i++) {
+void Carte::sauvegarde(const string &nomFichier) {
+    ofstream fichier(nomFichier);
+    if (fichier.is_open()) {
+
+      for (int i = 0; i < this ->parcelles.size(); i++) {
+        //if(this->parcelles.getType)
+        
+        fichier << this->parcelles[i]->getInfo() <<endl;
+      }
+        fichier.close();
+    } else {
+        std::cout << "Impossible d'ouvrir le fichier" << std::endl;
+    }
+}
+
+std::ostream &operator<<(std::ostream &o, Carte const &C) {
+  // o << "(" << P.sommets[0]
+  for (int i = 0; i < C.parcelles.size(); i++) {
     C.parcelles[i]->printInfo();
     o << endl;
   }

@@ -26,7 +26,8 @@ class Carte {
   
     // Getter
     //vector<Parcelle> GetCarte() {return carte;}
-  
+    void sauvegarde(const string &nomFichierexport);
+
     friend std::ostream &operator<<(std::ostream &o, Carte const &C);
 };
 

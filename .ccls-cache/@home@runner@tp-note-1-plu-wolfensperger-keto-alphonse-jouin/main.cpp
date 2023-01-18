@@ -77,9 +77,7 @@ void test_carte() {
   cout << "Affichage de la carte \n" << endl;
   Carte carte("tp4-fichiers/Parcelles_short.txt");
   cout << "Carte :" <<endl << carte << endl;
-
-  
-  
+  carte.sauvegarde("tp4-fichiers/sauvegarde.txt");
 }
 
 // Test swap à faire
