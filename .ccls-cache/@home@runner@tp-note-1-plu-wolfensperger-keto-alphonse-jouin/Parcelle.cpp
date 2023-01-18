@@ -17,7 +17,26 @@ int Parcelle::getNumero() const { return numero; }
 string Parcelle::getProprietaire() const { return proprietaire; }
 float Parcelle::getSurface() const { return surface; }
 Polygone Parcelle::getForme() const { return forme; }
-string Parcelle::getType() const { return type; }
+string Parcelle::getType() const {
+  string output;
+  
+  switch(type){
+    case ZU:
+      output = "Zone urbaine";
+    break;
+    case ZAU:
+      output = "Zone à urbaniser";
+    break;
+    case ZA:
+      output = "Zone agricole";
+    break;
+    case ZN:
+      output = "Zone naturelle et forestière";
+    break;
+  }
+
+  return output;
+}
 
 // Setter
 void Parcelle::setNumero(int pNumero) { numero = pNumero; }

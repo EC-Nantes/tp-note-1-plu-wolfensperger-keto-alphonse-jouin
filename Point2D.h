@@ -71,7 +71,7 @@ template <typename T> void Point2D<T>::setY(T y) { this->y = y; }
 // du point
 template <typename T>
 std::ostream &operator<<(std::ostream &o, Point2D<T> const &P) {
-  o << "(" << P.getX() << "," << P.getY() << ")" << endl;
+  o << "(" << P.getX() << "," << P.getY() << ")";
   return o;
 }
 

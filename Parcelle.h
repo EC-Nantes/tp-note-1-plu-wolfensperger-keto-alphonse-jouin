@@ -8,30 +8,36 @@
 #ifndef PARCELLE_H
 #define PARCELLE_H
 
+#include "Constructible.h"
 #include "Polygone.h"
 #include <iostream>
 #include <map>
 #include <stdexcept>
+#include <string>
 
 using namespace std;
 
+class Constructible;
+
 enum parcelleTypes { ZU, ZAU, ZA, ZN };
-std::map<parcelleTypes, std::string> getTypeString{
+/*
+std::map<parcelleTypes, std::string> getTypeString = {
     {std::make_pair(parcelleTypes::ZU, "Zone urbaine")},
     {std::make_pair(parcelleTypes::ZAU, "Zone à urbaniser")},
     {std::make_pair(parcelleTypes::ZA, "Zone agricole")},
     {std::make_pair(parcelleTypes::ZN, "Zone naturelle et forestière")}};
-
+*/
 class Parcelle {
 
+  friend class Constructible;
+
   // Paramètres
-private:
-  string type;
+protected:
+  parcelleTypes type;
   int numero;
   string proprietaire;
   float surface;
   Polygone forme;
-  int pConstructible;
 
   // Constructeur
 public:
@@ -67,10 +73,13 @@ public:
   void setForme(Polygone pForme);
 
 public:
-  virtual void setType(string pType) const = 0;
+  virtual void setType() = 0;
 
 public:
   float calculSurface(void);
+
+public:
+  virtual void printInfo() const = 0;
 };
 
 #endif
