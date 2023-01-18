@@ -41,6 +41,6 @@ string Parcelle_ZA::getInfo() const {
   output += " ";
   output += culture;
   output += "\r";
-  output += getForme().getStringPolygon();
+  output += getForme().getString();
   return output;
 }

@@ -28,6 +28,6 @@ string Parcelle_ZN::getInfo() const {
   output += " ";
   output += getProprietaire();
   output += "\r";
-  output += getForme().getStringPolygon();
+  output += getForme().getString();
   return output;
 }

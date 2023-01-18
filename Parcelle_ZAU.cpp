@@ -31,8 +31,8 @@ string Parcelle_ZAU::getInfo() const {
   output += " ";
   output += getProprietaire();
   output += " ";
-  output += to_string((int)(pConstructible*100));
+  output += to_string((int)(pConstructible * 100));
   output += "\r";
-  output += getForme().getStringPolygon();
+  output += getForme().getString();
   return output;
 }

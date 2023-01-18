@@ -23,7 +23,7 @@ void Polygone::translate(int dx, int dy) {
   }
 }
 
-string Polygone::getStringPolygon() const {
+string Polygone::getString() const {
   string output;
   for(int i = 0; i < sommets.size(); i++){
     output += "[";

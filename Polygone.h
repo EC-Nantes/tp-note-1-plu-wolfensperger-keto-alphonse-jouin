@@ -27,7 +27,7 @@ class Polygone {
     void addPoint(Point2D<int> sommet);
 	  void translate(int dx, int dy);
 
-    string getStringPolygon() const;
+    string getString() const;
 
     friend std::ostream &operator<<(std::ostream &o, Polygone const &P);
 };
