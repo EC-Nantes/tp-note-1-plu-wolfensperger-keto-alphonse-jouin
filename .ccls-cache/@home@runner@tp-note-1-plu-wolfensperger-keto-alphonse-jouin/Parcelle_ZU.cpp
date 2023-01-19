@@ -40,6 +40,6 @@ string Parcelle_ZU::getInfo() const {
   output += " ";
   output += to_string((int)surfaceConstruite);
   output += "\r";
-  output += getForme().getStringPolygon();
+  output += getForme().getString();
   return output;
 }

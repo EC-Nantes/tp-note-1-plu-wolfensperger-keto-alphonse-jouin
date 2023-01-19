@@ -13,6 +13,7 @@ void Constructible::setSurfaceConstruite(float pSurface) {
   surfaceConstruite = pSurface;
 }
 
+// Méthode pour construire sur une parcelle
 void Constructible::construire(float pSurface, Parcelle &pParcelle) {
   if (surfaceDisponible(pSurface) && (pParcelle.type == parcelleTypes::ZU ||
                                       pParcelle.type == parcelleTypes::ZAU ||
@@ -21,6 +22,7 @@ void Constructible::construire(float pSurface, Parcelle &pParcelle) {
   }
 }
 
+// Méthode pour retourner la valeur de la surface disponible sur toute la surface constructible de la parcelle
 bool Constructible::surfaceDisponible(float pSurface) {
   return surfaceConstructible() - surfaceConstruite > 0;
 }

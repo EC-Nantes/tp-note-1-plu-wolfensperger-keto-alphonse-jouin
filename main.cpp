@@ -48,7 +48,7 @@ void test_polygone() {
   cout << "--------------------------------------------" << endl << endl;
 }
 
-/*void test_parcelle() {
+void test_parcelle() {
   cout << "----------------------"
        << "Test Classe Parcelle"
        << "----------------------" << endl;
@@ -68,7 +68,7 @@ void test_polygone() {
   P.calculSurface();
   cout << "Parcelle surface :" << P.getSurface() << endl;
   cout << "Parcelle type :" << P.getType() << endl;
-}*/
+}
 
 void test_carte() {
   cout << "----------------------"

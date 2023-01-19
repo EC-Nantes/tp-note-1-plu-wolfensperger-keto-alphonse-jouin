@@ -48,7 +48,7 @@ void Parcelle::setForme(Polygone pForme) {
   surface = calculSurface();
 }
 
-// Fonction
+// Méthode calcul de la surface de la parcelle
 float Parcelle::calculSurface(void) {
   vector<Point2D<int>> points = forme.getSommets();
   float surface_v = 0;

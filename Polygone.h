@@ -1,13 +1,17 @@
 #ifndef POLYGONE_H
 #define POLYGONE_H
 
+/* includes */
 #include <vector>
 #include "Point2D.h"
 
 using namespace std;
 
-//std::ostream &operator<<(std::ostream &, Polygone const &);
+/*
+class polygone
 
+Polygone contenant un vecteur d'objets (point2D)
+*/
 class Polygone {
   private:
     vector<Point2D<int>> sommets;

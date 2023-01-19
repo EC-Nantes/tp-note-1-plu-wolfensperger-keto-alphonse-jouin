@@ -17,15 +17,11 @@ class Carte {
 
   public:
   
-    // Paramètres
-    //std::vector<Parcelle> parcelles;
   
     // Constructeur
     Carte();
     Carte(const string &nomFichier);
   
-    // Getter
-    //vector<Parcelle> GetCarte() {return carte;}
     void sauvegarde(const string &nomFichierexport);
 
     friend std::ostream &operator<<(std::ostream &o, Carte const &C);
